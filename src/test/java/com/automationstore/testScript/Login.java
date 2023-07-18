@@ -1,5 +1,6 @@
 package com.automationstore.testScript;
 
+import com.automationteststore.base.BaseClass;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -15,15 +16,16 @@ public class Login extends Home{
 	@Test
 	public void testLogin() throws InterruptedException {
 	
-		//driver = BaseClass.launchApp();
+		driver = BaseClass.launchApp();
 		LoginPage login = new LoginPage(driver);
 		//FileReader reader=new FileReader("Configuration//Config.properties");
 		//Properties props=new Properties();
         //props.load(reader);
-		Actions act = new Actions(driver);
+		/*Actions act = new Actions(driver);
         act.sendKeys(Keys.PAGE_DOWN).build().perform(); //Page Down
         System.out.println("Scroll down perfomed");
-        Thread.sleep(3000);
+        Thread.sleep(3000);*/
+		login.navigateToLogin();
         login.clickOnUsernameTextField();
 		Thread.sleep(1000);
 		login.enterUsername("testadmin");
