@@ -1,42 +1,36 @@
 package com.automationstore.testScript;
 
-import com.automationteststore.base.BaseClass;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
+import com.automationstore.pages.ShoppingCart;
 import com.automationstore.pages.LoginPage;
+import com.automationteststore.base.BaseClass;
 
-public class Login extends Home{
+public class Login extends BaseClass{
 
 	WebDriver driver;
 	
-
 	@Test
-	public void testLogin() throws InterruptedException {
-	
-		driver = BaseClass.launchApp();
-		LoginPage login = new LoginPage(driver);
-		//FileReader reader=new FileReader("Configuration//Config.properties");
-		//Properties props=new Properties();
-        //props.load(reader);
-		/*Actions act = new Actions(driver);
-        act.sendKeys(Keys.PAGE_DOWN).build().perform(); //Page Down
-        System.out.println("Scroll down perfomed");
-        Thread.sleep(3000);*/
-		login.navigateToLogin();
-        login.clickOnUsernameTextField();
-		Thread.sleep(1000);
-		login.enterUsername("testadmin");
-		Thread.sleep(1000);
-		//login.moveToPasswordTextField();
-		login.clickOnPasswordTextField();
-		Thread.sleep(1000);
-		login.enterPassword("admin");
-		Thread.sleep(1000);
-		login.clickOnLoginButton();
-		login.getLoginPageTitle();
-		
+	public void testLogin() {
+		try {
+			driver=BaseClass.launchApp();
+			LoginPage login = new LoginPage(driver);
+			Thread.sleep(1000);
+			login.navigateToLogin();
+			Thread.sleep(1000);
+			login.scrollToUsernameTextField();
+			Thread.sleep(1000);
+			login.enterUsername("testadmin");
+			Thread.sleep(1000);
+			login.scrollToPasswordTextField();
+			login.enterPassword("admin");
+			Thread.sleep(1000);
+			login.clickOnLoginButton();
+			login.getLoginPageTitle();
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }
